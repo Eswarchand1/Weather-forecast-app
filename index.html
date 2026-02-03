@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Forecast App</title>
+     <link href="./output.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Weather Icons (from OpenWeatherMap or free icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.12/css/weather-icons.min.css">
+</head>
+<body class="bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900 min-h-screen text-white font-sans">
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+        <h1 class="text-4xl font-bold text-center mb-8 text-yellow-300">🌤️ Weather Forecast</h1>
+        
+        <!-- Search Section -->
+        <div class="bg-gray-700 bg-opacity-10  backdrop-blur-md rounded-lg p-6 mb-8 shadow-lg">
+            <div class="flex flex-col md:flex-row gap-4">
+                <input type="text" id="cityInput" placeholder="Enter city name" class="flex-1 px-4 py-2 rounded-lg bg-white bg-opacity-20 text-black border-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-yellow-300">
+                <button id="searchBtn" class="px-6 py-2 bg-yellow-500 hover:bg-yellow-600 rounded-lg font-semibold transition">Search</button>
+                <button id="currentLocationBtn" class="px-6 py-2 bg-green-500 hover:bg-green-600 rounded-lg font-semibold transition">Current Location</button>
+            </div>
+            <!-- Dropdown for Recent Cities -->
+            <div class="relative mt-4">
+                <button id="dropdownBtn" class="px-4 py-2 bg-gray-700 hover:bg-gray-600  rounded-lg font-semibold transition hidden">Recent Cities ▼</button>
+                <ul id="recentCitiesList" class="absolute top-full left-0 bg-gray-800 rounded-lg shadow-lg mt-2 w-full max-h-40 overflow-y-auto hidden"></ul>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
