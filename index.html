@@ -27,6 +27,29 @@
                 <ul id="recentCitiesList" class="absolute top-full left-0 bg-gray-800 rounded-lg shadow-lg mt-2 w-full max-h-40 overflow-y-auto hidden"></ul>
             </div>
         </div>
+        <!-- Current Weather Display -->
+        <div id="currentWeather" class="bg-blue-300 bg-opacity-30 backdrop-blur-md rounded-lg p-6 mb-8 shadow-lg hidden">
+            <h2 class="text-2xl font-bold mb-4">Current Weather</h2>
+            <div class="flex items-center justify-between">
+                <div>
+                    <p id="cityName" class="text-xl"></p>
+                    <p id="temperature" class="text-3xl font-bold"></p>
+                    <button id="unitToggle" class="mt-2 px-3 py-1 bg-blue-500 hover:bg-blue-600 rounded text-sm">Toggle °C/°F</button>
+                </div>
+                <div class="text-center">
+                    <i id="weatherIcon" class="wi text-6xl"></i>
+                    <p id="description" class="mt-2"></p>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+                <div><i class="wi wi-humidity text-2xl"></i> <span id="humidity"></span>% Humidity</div>
+                <div><i class="wi wi-strong-wind text-2xl"></i> <span id="windSpeed"></span> m/s Wind</div>
+                <div><i class="wi wi-barometer text-2xl"></i> <span id="pressure"></span> hPa</div>
+                <div><i class="wi wi-thermometer text-2xl"></i> Feels like <span id="feelsLike"></span>°C</div>
+            </div>
+            <div id="alert" class="mt-4 p-4 bg-red-500 rounded-lg hidden">⚠️ Extreme Temperature Alert: Above 40°C!</div>
+        </div>
+        
     </div>
     
     <script src="script.js"></script>
