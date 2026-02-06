@@ -14,3 +14,15 @@ const errorPopup = document.getElementById('errorPopup');
 const errorMessage = document.getElementById('errorMessage');
 const closeError = document.getElementById('closeError');
 const unitToggle = document.getElementById('unitToggle');
+
+// State
+let isCelsius = true;
+let recentCities = JSON.parse(localStorage.getItem('recentCities')) || [];
+
+// Event Listeners
+searchBtn.addEventListener('click', () => searchWeather(cityInput.value.trim()));
+currentLocationBtn.addEventListener('click', getCurrentLocationWeather);
+dropdownBtn.addEventListener('click', toggleDropdown);
+unitToggle.addEventListener('click', toggleUnit);
+closeError.addEventListener('click', () => errorPopup.classList.add('hidden'));
+cityInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') searchBtn.click(); });
