@@ -26,3 +26,21 @@ dropdownBtn.addEventListener('click', toggleDropdown);
 unitToggle.addEventListener('click', toggleUnit);
 closeError.addEventListener('click', () => errorPopup.classList.add('hidden'));
 cityInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') searchBtn.click(); });
+
+//funtions
+async function searchWeather(city) {
+    if (!city) {
+        showError('Please enter a city name.');
+        return;
+    }
+    try {
+        const geoData = await fetch(`${geoUrl}q=${city}&limit=1&appid=${apiKey}`).then(res => res.json());
+        if (!geoData.length) throw new Error('City not found.');
+        const { lat, lon, name } = geoData[0];
+        addToRecentCities(name);
+        fetchWeather(lat, lon, name);
+    } catch (error) {
+        showError(error.message);
+    }
+}
+
