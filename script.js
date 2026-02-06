@@ -61,3 +61,21 @@ function getCurrentLocationWeather() {
         showError('Geolocation not supported.');
     }
 }
+
+async function fetchWeather(lat, lon, cityName) {
+    try {
+        const [currentRes, forecastRes] = await Promise.all([
+            fetch(`${baseUrl}weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`),
+            fetch(`${baseUrl}forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`)
+        ]);
+        const currentData = await currentRes.json();
+        const forecastData = await forecastRes.json();
+        if (currentData.cod !== 200 || forecastData.cod !== '200') throw new Error('Weather data unavailable.');
+        displayCurrentWeather(currentData, cityName);
+        displayForecast(forecastData);
+        updateBackground(currentData.weather[0].main);
+    } catch (error) {
+        showError(error.message);
+    }
+}
+
