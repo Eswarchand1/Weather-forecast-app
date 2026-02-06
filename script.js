@@ -126,3 +126,19 @@ function toggleUnit() {
     }
     isCelsius = !isCelsius;
 }
+
+function addToRecentCities(city) {
+    if (!recentCities.includes(city)) {
+        recentCities.unshift(city);
+        if (recentCities.length > 5) recentCities.pop();
+        localStorage.setItem('recentCities', JSON.stringify(recentCities));
+        updateDropdown();
+    }
+}
+
+function updateDropdown() {
+    if (recentCities.length > 0) {
+        dropdownBtn.classList.remove('hidden');
+        recentCitiesList.innerHTML = recentCities.map(city => `<li class="px-4 py-2 hover:bg-gray-600 cursor-pointer" onclick="searchWeather('${city}')">${city}</li>`).join('');
+    }
+}
