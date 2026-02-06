@@ -44,3 +44,20 @@ async function searchWeather(city) {
     }
 }
 
+function getCurrentLocationWeather() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(async (pos) => {
+            const { latitude, longitude } = pos.coords;
+            try {
+                const weatherData = await fetch(`${baseUrl}weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`).then(res => res.json());
+                if (weatherData.cod !== 200) throw new Error('Location not found.');
+                addToRecentCities(weatherData.name);
+                fetchWeather(latitude, longitude, weatherData.name);
+            } catch (error) {
+                showError(error.message);
+            }
+        }, () => showError('Geolocation access denied.'));
+    } else {
+        showError('Geolocation not supported.');
+    }
+}
