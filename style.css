@@ -1,0 +1,29 @@
+/* Custom styles for enhancements beyond Tailwind */
+body.rainy {
+    background: linear-gradient(to bottom, #4a5568, #2d3748), url('https://source.unsplash.com/featured/?rain') no-repeat center center fixed;
+    background-size: cover;
+}
+
+body.sunny {
+    background: linear-gradient(to bottom, #fbbf24, #f59e0b);
+}
+
+body.cloudy {
+    background: linear-gradient(to bottom, #a0aec0, #718096);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) { /* iPad Mini */
+    .container { padding: 1rem; }
+    #forecastContainer { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 375px) { /* iPhone SE */
+    .container { padding: 0.5rem; }
+    h1 { font-size: 2rem; }
+    #forecastContainer { grid-template-columns: 1fr; }
+}
+
+/* Animations */
+.fade-in { animation: fadeIn 0.5s ease-in; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
