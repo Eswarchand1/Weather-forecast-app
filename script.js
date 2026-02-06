@@ -113,3 +113,16 @@ function displayForecast(data) {
     });
     forecast.classList.remove('hidden');
 }
+
+function toggleUnit() {
+    const tempEl = document.getElementById('temperature');
+    let temp = parseFloat(tempEl.textContent);
+    if (isCelsius) {
+        temp = (temp * 9/5) + 32;
+        tempEl.textContent = `${Math.round(temp)}°F`;
+    } else {
+        temp = (temp - 32) * 5/9;
+        tempEl.textContent = `${Math.round(temp)}°C`;
+    }
+    isCelsius = !isCelsius;
+}
