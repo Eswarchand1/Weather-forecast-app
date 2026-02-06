@@ -93,3 +93,23 @@ function displayCurrentWeather(data, city) {
     currentWeather.classList.remove('hidden');
     currentWeather.classList.add('fade-in');
 }
+
+function displayForecast(data) {
+    const container = document.getElementById('forecastContainer');
+    container.innerHTML = '';
+    const dailyData = data.list.filter((_, i) => i % 8 === 0).slice(0, 5); // Every 24 hours
+    dailyData.forEach(day => {
+        const date = new Date(day.dt * 1000).toDateString();
+        const card = document.createElement('div');
+        card.className = 'bg-white bg-opacity-20 p-4 rounded-lg text-center fade-in';
+        card.innerHTML = `
+            <p class="font-bold">${date}</p>
+            <i class="wi wi-owm-${day.weather[0].id} text-3xl my-2"></i>
+            <p>${Math.round(day.main.temp)}°C</p>
+            <p><i class="wi wi-humidity"></i> ${day.main.humidity}%</p>
+            <p><i class="wi wi-strong-wind"></i> ${day.wind.speed} m/s</p>
+        `;
+        container.appendChild(card);
+    });
+    forecast.classList.remove('hidden');
+}
