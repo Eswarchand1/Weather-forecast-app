@@ -79,3 +79,17 @@ async function fetchWeather(lat, lon, cityName) {
     }
 }
 
+function displayCurrentWeather(data, city) {
+    document.getElementById('cityName').textContent = city;
+    document.getElementById('temperature').textContent = `${Math.round(data.main.temp)}°C`;
+    document.getElementById('weatherIcon').className = `wi wi-owm-${data.weather[0].id}`;
+    document.getElementById('description').textContent = data.weather[0].description;
+    document.getElementById('humidity').textContent = data.main.humidity;
+    document.getElementById('windSpeed').textContent = data.wind.speed;
+    document.getElementById('pressure').textContent = data.main.pressure;
+    document.getElementById('feelsLike').textContent = Math.round(data.main.feels_like);
+    if (data.main.temp > 40) document.getElementById('alert').classList.remove('hidden');
+    else document.getElementById('alert').classList.add('hidden');
+    currentWeather.classList.remove('hidden');
+    currentWeather.classList.add('fade-in');
+}
