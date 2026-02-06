@@ -10,3 +10,8 @@ A modern, responsive weather forecast app built with JavaScript, HTML, and Tailw
 - Dynamic icons and backgrounds based on weather.
 - 5-day forecast with organized cards.
 - Responsive design for
+
+## Installations of tailwind css
+1. cd Weather Forecast Application
+2. npm install tailwindcss @tailwindcss/cli
+3. npx @tailwindcss/cli -i ./input.css -o ./output.css --watch
