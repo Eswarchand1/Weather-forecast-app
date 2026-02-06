@@ -142,3 +142,19 @@ function updateDropdown() {
         recentCitiesList.innerHTML = recentCities.map(city => `<li class="px-4 py-2 hover:bg-gray-600 cursor-pointer" onclick="searchWeather('${city}')">${city}</li>`).join('');
     }
 }
+
+function toggleDropdown() {
+    recentCitiesList.classList.toggle('hidden');
+}
+
+function updateBackground(condition) {
+    document.body.className = condition.toLowerCase().includes('rain') ? 'rainy' : condition.toLowerCase().includes('clear') ? 'sunny' : 'cloudy';
+}
+
+function showError(msg) {
+    errorMessage.textContent = msg;
+    errorPopup.classList.remove('hidden');
+}
+
+// Initialize
+updateDropdown();
